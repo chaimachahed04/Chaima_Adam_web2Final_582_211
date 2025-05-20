@@ -1,411 +1,538 @@
 /* ======================
-   HEADER
+   HEADER - accueil
    ====================== */
-   .site-header {
-    width: 100%;
-    padding: 1em;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    background: var(--bg);
+/* Je définis le conteneur du header principal pour qu'il prenne toute la largeur et soit un flex container */
+.site-header {
+  /* Je fixe la largeur à 100% pour remplir l'écran */
+  width: 100%;
+  /* Je crée un padding de 1em tout autour pour espacer le contenu */
+  padding: 1em;
+  /* J'active le modèle Flexbox pour aligner les éléments */
+  display: flex;
+  /* J'aligne verticalement les éléments au centre */
+  align-items: center;
+  /* Je répartis l'espace entre les éléments (logo à gauche, nav à droite) */
+  justify-content: space-between;
+  /* Je positionne en relatif pour permettre le positionnement absolu d'enfants */
+  position: relative;
+  /* J'applique le background défini par la variable CSS --bg */
+  background: var(--bg);
+}
+
+/* Logo */
+/* Je cible l'image du logo pour lui donner une largeur spécifique */
+.site-header .logo img {
+  /* Je fixe la largeur du logo à 100px pour l'uniformité */
+  width: 100px;
+}
+
+/* LANGUE & HAMBURGER (mobile) */
+/* Je cible le sélecteur de langue pour ajuster la taille et indiquer qu'il est cliquable */
+.lang-toggle {
+  /* Je réduis légèrement la taille de la police */
+  font-size: 0.9em;
+  /* Je change le curseur pour indiquer l'interactivité */
+  cursor: pointer;
+}
+
+/* Je configure le bouton hamburger : flex column pour empiler les spans */
+.menu-toggle {
+  /* J'affiche en flex pour mettre les barres verticalement */
+  display: flex;
+  /* Je mets les barres en colonne */
+  flex-direction: column;
+  /* J'ajoute un écart de 5px entre chaque barre */
+  gap: 5px;
+  /* J'enlève tout background par défaut */
+  background: none;
+  /* J'enlève la bordure par défaut */
+  border: none;
+  /* J'indique que c'est cliquable */
+  cursor: pointer;
+}
+
+/* Je taille chaque barre du hamburger */
+.menu-toggle span {
+  /* Je fixe la largeur de chaque barre */
+  width: 25px;
+  /* Je fixe la hauteur de chaque barre */
+  height: 3px;
+  /* J'applique la couleur du texte comme background */
+  background: var(--text);
+}
+
+/* NAVIGATION (desktop) - cachée mobile */
+/* Je cache la navigation par défaut sur mobile */
+.site-nav {
+  display: none;
+}
+
+/* ======================
+   HERO MOBILE-FIRST
+   ====================== */
+/* Je définis la section hero pour appareil mobile */
+.hero {
+  /* Je remplis toute la largeur */
+  width: 100%;
+  /* Je donne une hauteur fixe de 700px */
+  height: 700px;
+  /* J'applique une image de fond via URL relative */
+  background-image: url('../assets/images/img/Musée Redpath sous la lumière dorée.png');
+  /* Je fais en sorte que l'image couvre toute la zone */
+  background-size: cover;
+  /* Je centre l'image */
+  background-position: center;
+  /* Je n'autorise pas la répétition */
+  background-repeat: no-repeat;
+  /* J'utilise flex pour centrer le contenu */
+  display: flex;
+  /* Je place le flux verticalement */
+  flex-direction: column;
+  /* J'aligne horizontalement au centre */
+  align-items: center;
+  /* J'aligne verticalement au centre */
+  justify-content: center;
+  /* Je positionne en relatif pour superpositions */
+  position: relative;
+  /* Je place cette section au-dessus de tout autre élément de même niveau */
+  z-index: 1;
+}
+
+/* Je définis le conteneur du contenu du hero */
+.hero-content {
+  /* Je positionne relatif pour être au-dessus de l'overlay */
+  position: relative;
+  /* Je centre le texte */
+  text-align: center;
+  /* J'applique l'animation fadeInUp */
+  animation: fadeInUp 1s ease-out both;
+  /* Je garantis que le z-index place ce contenu au-dessus */
+  z-index: 1;
+}
+
+/* Je stylise le titre principal dans le hero */
+.hero h1 {
+  /* Je fixe la taille de la police */
+  font-size: 2.2rem;
+  /* J'ajuste la hauteur de ligne pour le confort de lecture */
+  line-height: 1.2;
+  /* J'applique la couleur blanche définie par la variable */
+  color: var(--white);
+  /* J'ajoute une ombre portée pour améliorer la lisibilité sur l'image */
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Je souligne certains mots avec la couleur primaire */
+.highlight {
+  color: var(--primary);
+}
+
+/* ======================
+   HORAIRES
+   ====================== */
+/* Je définis la section des horaires */
+.hours {
+  /* J'ajoute du padding pour espacer */
+  padding: 1.5em;
+  /* Je centre tout le texte */
+  text-align: center;
+}
+
+/* Je cible les paragraphes à l'intérieur pour les rendre italiques */
+.hours p {
+  /* J'applique le style italique */
+  font-style: italic;
+}
+
+/* ======================
+   CARTES MOBILE (4 cartes)
+   ====================== */
+/* Je configure les cartes pour mobile (une colonne) */
+.cards.mobile {
+  /* J'utilise flex pour une colonne */
+  display: flex;
+  flex-direction: column;
+  /* J'ajoute un gap entre les cartes */
+  gap: 1.5em;
+  /* J'ajoute du padding autour */
+  padding: 1em;
+}
+
+/* ======================
+   CARTES GÉNÉRALE
+   ====================== */
+/* Je réunis la configuration mobile et desktop en mobile-first */
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  padding: 1em;
+}
+
+/* Je définis le style de base de chaque carte */
+.cards .card {
+  /* Je prépare pour enfants positionnés absolument */
+  position: relative;
+  /* Je cache tout contenu débordant */
+  overflow: hidden;
+  /* Je crée des coins arrondis */
+  border-radius: 16px;
+  /* J'applique une ombre douce */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  /* Je prépare les transitions pour hover */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Je mets un fond blanc */
+  background: var(--white);
+}
+
+/* Je uniformise les images à l'intérieur des cartes */
+.cards .card img {
+  /* Je force la largeur à 100% */
+  width: 100%;
+  /* Je maintiens un ratio 4:3 */
+  aspect-ratio: 4 / 3;
+  /* Je recadre pour couvrir la zone sans déformation */
+  object-fit: cover;
+  /* Je m'assure que l'image est un block */
+  display: block;
+}
+
+/* Je cible le titre et le label pour les espacer */
+.cards .card h3,
+.cards .card .card-label {
+  /* J'ajoute du padding interne */
+  padding: 1em;
+  /* Je supprime les marges */
+  margin: 0;
+  /* Je fixe la taille de la police */
+  font-size: 1rem;
+  /* Je centre le texte */
+  text-align: center;
+}
+
+/* Je définis l'effet hover pour agrandir légèrement */
+.cards .card:hover {
+  /* Je scale la carte */
+  transform: scale(1.03);
+  /* J'ajoute une ombre plus prononcée */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* ======================
+   SECTION DÉCOUVRIR (desktop only)
+   ====================== */
+/* Je cache la section découvrir par défaut (mobile) */
+.discover {
+  display: none;
+  padding: 1.5em;
+}
+
+/* Je stylise le titre de la section découvrir */
+.discover h2 {
+  /* Je fixe la taille de la police */
+  font-size: 1.5rem;
+  /* J'ajoute un espace sous le titre */
+  margin-bottom: 1em;
+}
+
+/* ======================
+   FOOTER
+   ====================== */
+/* Je définis le footer principal */
+.site-footer {
+  /* J'applique la couleur de texte comme fond */
+  background: var(--text);
+  /* Je mets la couleur du texte en blanc */
+  color: var(--white);
+  /* Je centre le texte */
+  text-align: center;
+  /* J'ajoute du padding vertical et horizontal */
+  padding: 2em 1em;
+}
+
+/* Je cible le logo dans le footer */
+.footer-logo img {
+  /* Je fixe la largeur */
+  width: 100px;
+  /* J'ajoute un espace sous le logo */
+  margin-bottom: 1em;
+}
+
+/* Je cible les icônes sociales pour les espacer */
+.site-footer .social a {
+  /* J'ajoute une marge horizontale */
+  margin: 0 0.5em;
+  /* Je m'assure que chaque lien est inline-block */
+  display: inline-block;
+}
+
+/* Je fixe la taille des icônes sociales */
+.site-footer .social img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Je cible les paragraphes du footer */
+.site-footer p {
+  /* J'ajoute une marge en haut */
+  margin-top: 1em;
+  /* Je réduis la taille de la police */
+  font-size: 0.8em;
+}
+
+/* ======================
+   ANIMATIONS
+   ====================== */
+/* Je définis la keyframe fadeInUp pour les animations */
+@keyframes fadeInUp {
+  from {
+    /* Je démarre avec le contenu transparent */
+    opacity: 0;
+    /* Je le déplace vers le bas de 20px */
+    transform: translateY(20px);
   }
-  
-  /* Logo */
-  .site-header .logo img {
-    width: 100px;
+  to {
+    /* Je termine avec l'opacité à 1 */
+    opacity: 1;
+    /* Je replace à sa position initiale */
+    transform: translateY(0);
   }
-  
-  /* LANGUE & HAMBURGER (mobile) */
+}
+
+/* ======================
+   MEDIA QUERIES (desktop ≥ 768px)
+   ====================== */
+@media (min-width: 768px) {
+  /* HEADER : je cache le menu hamburger et le sélecteur de langue */
+  .menu-toggle,
   .lang-toggle {
-    font-size: 0.9em;
-    cursor: pointer;
-  }
-  .menu-toggle {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  .menu-toggle span {
-    width: 25px;
-    height: 3px;
-    background: var(--text);
-  }
-  
-  /* NAVIGATION (desktop) - cachée mobile */
-  .site-nav {
     display: none;
   }
-  
-  /* ======================
-     HERO MOBILE-FIRST
-     ====================== */
+  /* Je passe la nav en affichage flex */
+  .site-nav {
+    display: flex;
+    gap: 2em;
+    font-size: 0.95em;
+    align-items: center;
+  }
+
+  /* HERO : je change l'image et la hauteur pour desktop */
   .hero {
-    width: 100%;
-    height: 700px;
-    background-image: url('../assets/images/img/Musée Redpath sous la lumière dorée.png'); /* Chemin correct */
-    background-size: cover; /* L'image couvre toute la section */
-    background-position: center; /* Centre l'image */
-    background-repeat: no-repeat; /* Empêche la répétition de l'image */
-    display: flex;
-    flex-direction: column; /* Assure que le contenu reste vertical */
-    align-items: center; /* Centre horizontalement le contenu */
-    justify-content: center; /* Centre verticalement le contenu */
-    position: relative; /* Nécessaire pour gérer les superpositions */
-    z-index: 1; /* Assure que le contenu est au-dessus de l'image */
+    background-image: url('/assets/images/img/hero-desktop.png');
+    height: 900px;
   }
-  
-  
-  .hero-content {
-    position: relative; /* Assure que le contenu est au-dessus de l'overlay */
-    text-align: center;
-    animation: fadeInUp 1s ease-out both;
-    z-index: 1; /* Place le contenu au-dessus de l'image et de l'overlay */
-  }
-  
+  /* J'agrandis le titre pour desktop */
   .hero h1 {
-    font-size: 2.2rem;
-    line-height: 1.2;
-    color: var(--white); /* Assure que le texte est visible */
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); /* Ajoute un effet d'ombre pour améliorer la lisibilité */
+    font-size: 3.5rem;
   }
-  
-  .highlight {
-    color: var(--primary);
-  }
-  
-  /* ======================
-     HORAIRES
-     ====================== */
-  .hours {
-    padding: 1.5em;
-    text-align: center;
-  }
-  .hours p {
-    font-style: italic;
-  }
-  
-  /* ======================
-     CARTES MOBILE (4 cartes)
-     ====================== */
-  .cards.mobile {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5em;
-    padding: 1em;
-  }
-  
-  /* ======================
-     CARTES GÉNÉRALE
-     ====================== */
+
+  /* CARTES → j'organise en grille 2×2 */
   .cards {
-    /* fusionne mobile et desktop : mobile-first */
-    display: flex;
-    flex-direction: column;
-    gap: 1.5em;
-    padding: 1em;
-    
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2em;
+    padding: 2em;
   }
-  .cards .card {
-    position: relative;
-    overflow: hidden;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: var(--white);
-  }
-  .cards .card img {
-    /* uniformisation des images */
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    display: block;
-  }
-  .cards .card h3,
-  .cards .card .card-label {
-    /* suivant que tu utilises <h3> ou .card-label */
-    padding: 1em;
-    margin: 0;
-    font-size: 1rem;
-    text-align: center;
-  }
+  /* J'applique le même effet hover */
   .cards .card:hover {
     transform: scale(1.03);
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   }
-  
-  /* ======================
-     SECTION DÉCOUVRIR (desktop only)
-     ====================== */
-  .discover {
-    display: none;  /* cachée sur mobile */
-    padding: 1.5em;
-  }
-  .discover h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1em;
-  }
-  
-  /* ======================
-     FOOTER
-     ====================== */
-  .site-footer {
-    background: var(--text);
-    color: var(--white);
-    text-align: center;
-    padding: 2em 1em;
-  }
-  .footer-logo img {
-    width: 100px;
-    margin-bottom: 1em;
-  }
-  .site-footer .social a {
-    margin: 0 0.5em;
-    display: inline-block;
-  }
-  .site-footer .social img {
-    width: 24px;
-    height: 24px;
-  }
-  .site-footer p {
-    margin-top: 1em;
-    font-size: 0.8em;
-  }
-  
-  /* ======================
-     ANIMATIONS
-     ====================== */
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  /* ======================
-     MEDIA QUERIES (desktop ≥ 768px)
-     ====================== */
-  @media (min-width: 768px) {
-    /* HEADER : bascule nav / hamburger */
-    .menu-toggle,
-    .lang-toggle {
-      display: none;
-    }
-    .site-nav {
-      display: flex;
-      gap: 2em;
-      font-size: 0.95em;
-      align-items: center;
-    }
-  
-    /* HERO : image desktop + hauteur */
-    .hero {
-      background-image: url('/assets/images/img/hero-desktop.png');
-      height: 900px;
-    }
-    .hero h1 {
-      font-size: 3.5rem;
-    }
-  
-    /* CARTES → grid 2×2 */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2em;
-      padding: 2em;
-    }
-    .cards .card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-  
-    /* Affiche discover si besoin */
-    .discover {
-      display: block;
-    }
-  }
 
+  /* Je réaffiche la section découvrir */
+  .discover {
+    display: block;
+  }
+}
 
 /* =========================================================================
-   Expositions Page Styles (mobile‑first, à placer dans cc.css)
+   Expositions Page Styles (mobile‑first)
    ========================================================================= */
 
 /* ======================
    SWITCH MOBILE / DESKTOP
    ====================== */
-   .expositions.mobile { display: block; }
-   .expositions.desktop { display: none; }
-   
-   @media (min-width: 768px) {
-     .expositions.mobile  { display: none; }
-     .expositions.desktop { display: block; }
-   }
-   
-   /* ======================
-      LAYOUT DES CARTES
-      ====================== */
-   /* mobile (1 colonne) */
-   .expositions.mobile .cards {
-     display: flex;
-     flex-direction: column;
-     gap: 1.5em;
-     padding: 1em;
-   }
+/* Je montre la version mobile par défaut */
+.expositions.mobile { display: block; }
+/* Je cache la version desktop par défaut */
+.expositions.desktop { display: none; }
 
-
-  h2 {
-    display: block;
-    font-size: 3em;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-        
-    }
-    
-    .intro-expositions p {
-      max-width: 800px;
-      margin: 0.5em auto 2em;
-      font-size: 1.05rem;
-      line-height: 1.6;
-      color: var(--text);
-      text-align: center;
-    }
-    
-
-   
-   /* desktop (grid 2×2) */
-   @media (min-width: 768px) {
-     .expositions.desktop .cards {
-       display: grid;
-       grid-template-columns: repeat(2, 1fr);
-       gap: 2em;
-       padding: 2em 1em;
-     }
-   }
-   
-   /* ======================
-      STYLE GÉNÉRAL DES CARTES
-      ====================== */
-   .expositions .card {
-     background: var(--white);
-     border-radius: 12px;
-     overflow: hidden;
-     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-     transition: transform 0.3s ease, box-shadow 0.3s ease;
-     display: flex;
-     flex-direction: column;
-   }
-   .expositions .card img {
-     width: 100%;
-     display: block;
-     object-fit: cover;
-   }
-   
-   /* ======================
-      MOBILE : LABEL SUR IMAGE
-      ====================== */
-   .expositions.mobile .card {
-     position: relative;
-   }
-   .expositions.mobile .card-label {
-     position: absolute;
-     bottom: 8px;
-     right: 8px;
-     background: rgba(0,0,0,0.6);
-     color: #fff;
-     padding: 4px 8px;
-     border-radius: 4px;
-     font-size: 0.85rem;
-     text-transform: uppercase;
-   }
-   
-   /* ======================
-      DESKTOP : CONTENU TEXTE
-      ====================== */
-   .expositions.desktop .card-content {
-     padding: 1.2em;
-     display: flex;
-     flex-direction: column;
-     flex-grow: 1;
-   }
-   .expositions.desktop .card-content h3 {
-     margin: 0 0 0.6em;
-     font-size: 1.2rem;
-     color: var(--text);
-   }
-   .expositions.desktop .card-content p {
-     margin: 0;
-     flex-grow: 1;
-     font-size: 0.95rem;
-     line-height: 1.5;
-     color: #555;
-   }
-   /* hover desktop */
-   .expositions.desktop .card:hover {
-     transform: translateY(-5px);
-     box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-   }
-   
-   
-   .t-rex {
-    position: absolute;
-    left: 70vw; /*Pour que la plume sois 35% de la largeur de la fenêtre */
-    top: -10vh; /* Pour que se soit -10% de la hauteur de la fenêtre */
-    height: 10vh; /*Pour que l'hauteurde la plume correspondant à 10% de la hauteur de la fenêtre */
-    background-image: url(/assets/images/img/t-rex-3252844_1280.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    animation: t-rex 10s infinite ease-in-out; /* J'ai fait en sorte que l'animation infinie avec lissage */
-    z-index: 1000; /* Place le T-Rex au-dessus du contenu */
+/* Je passe en desktop à partir de 768px */
+@media (min-width: 768px) {
+  .expositions.mobile  { display: none; }
+  .expositions.desktop { display: block; }
 }
 
+/* ======================
+   LAYOUT DES CARTES (mobile)
+   ====================== */
+/* Je configure les cartes pour expositions en mobile */
+.expositions.mobile .cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  padding: 1em;
+}
+
+/* Je cible le titre général h2 */
+h2 {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 3em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  font-weight: bold;
+}
+
+/* Je stylise l'introduction des expositions */
+.intro-expositions p {
+  max-width: 800px;
+  margin: 0.5em auto 2em;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text);
+  text-align: center;
+}
+
+/* ======================
+   LAYOUT DES CARTES (desktop)
+   ====================== */
+@media (min-width: 768px) {
+  .expositions.desktop .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2em;
+    padding: 2em 1em;
+  }
+}
+
+/* ======================
+   STYLE GÉNÉRAL DES CARTES
+   ====================== */
+/* Je stylise chaque carte d'exposition */
+.expositions .card {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Je fais en sorte que l'image remplisse la carte */
+.expositions .card img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* ======================
+   MOBILE : LABEL SUR IMAGE
+   ====================== */
+/* Je positionne le label sur l'image pour mobile */
+.expositions.mobile .card {
+  position: relative;
+}
+.expositions.mobile .card-label {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+/* ======================
+   DESKTOP : CONTENU TEXTE
+   ====================== */
+/* Je mets du padding et organise le contenu texte */
+.expositions.desktop .card-content {
+  padding: 1.2em;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.expositions.desktop .card-content h3 {
+  margin: 0 0 0.6em;
+  font-size: 1.2rem;
+  color: var(--text);
+}
+.expositions.desktop .card-content p {
+  margin: 0;
+  flex-grow: 1;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #555;
+}
+/* Je définis l'effet hover pour desktop */
+.expositions.desktop .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+/* Je crée une animation pour le T-Rex */
+.t-rex {
+  position: absolute;
+  /* Je place horizontalement à 70vw */
+  left: 70vw;
+  /* Je place verticalement à -10vh */
+  top: -10vh;
+  /* Je fixe la hauteur à 10vh */
+  height: 10vh;
+  /* J'applique l'image de fond du T-Rex */
+  background-image: url(/assets/images/img/t-rex-3252844_1280.png);
+  /* Je fais en sorte que l'image soit contenue */
+  background-size: contain;
+  /* Je n'autorise pas la répétition */
+  background-repeat: no-repeat;
+  /* J'applique l'animation t-rex sur 10s en boucle */
+  animation: t-rex 10s infinite ease-in-out;
+  /* Je place le T-Rex au-dessus de tout */
+  z-index: 1000;
+}
+
+/* Je définis la keyframe pour l'animation t-rex */
 @keyframes t-rex {
-    0% {
-        transform: translateY(0vh) translateX(-10vw) rotate(40deg);
-    }
-    20% {
-        transform: translateY(20vh) translateX(10vw) rotate(-10deg);
-    }
-    40% {
-        transform: translateY(40vh) translateX(-10vw) rotate(20deg);
-    }
-    60% {
-        transform: translateY(60vh) translateX(10vw) rotate(-5deg);
-    }
-    80% {
-        transform: translateY(80vh) translateX(-10vw) rotate(10deg);
-    }
-    100% {
-        transform: translateY(100vh) translateX(10vw) rotate(-10deg);
-    }
+  0% {
+    transform: translateY(0vh) translateX(-10vw) rotate(40deg);
+  }
+  20% {
+    transform: translateY(20vh) translateX(10vw) rotate(-10deg);
+  }
+  40% {
+    transform: translateY(40vh) translateX(-10vw) rotate(20deg);
+  }
+  60% {
+    transform: translateY(60vh) translateX(10vw) rotate(-5deg);
+  }
+  80% {
+    transform: translateY(80vh) translateX(-10vw) rotate(10deg);
+  }
+  100% {
+    transform: translateY(100vh) translateX(10vw) rotate(-10deg);
+  }
 }
 
-/* ====================================
+/* ==============================================
    HERO CONTENT — Réglages tablette
-   ==================================== */
-/* Desktop « limite basse » (tablette) */
+   ============================================== */
+/* Desktop « limite basse » (tablette) */
 @media (min-width: 768px) and (max-width: 1024px) {
   .hero-content {
     position: absolute;
     top: 50%;
-    left: 5%;        /* un peu moins de décalage à gauche */
+    left: 5%;
     transform: translateY(-50%);
-    width: 50%;      /* plus de place pour le texte en tablette */
+    width: 50%;
     padding: 0;
     text-align: left;
   }
   .hero h1 {
-    /* on adapte le clamp pour tablette */
     font-size: clamp(2.5rem, 6vw, 5rem);
     line-height: 1.1;
   }
@@ -414,7 +541,7 @@
   }
 }
 
-/* Desktop « plein » (grand écran) */
+/* Desktop « plein » (grand écran) */
 @media (min-width: 1025px) {
   .hero-content {
     left: 10%;
@@ -429,167 +556,167 @@
 }
 
 /* ======================
-   HERO MOBILE-FIRST
+   HERO MOBILE-FIRST (redondance pour fallback)
    ====================== */
-   .hero {
-    width: 100%;
-    height: 600px;
-    background: url('/assets/images/img/hero-mobile.png') center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;         /* pour position absolute en desktop */
-  }
-  
-  .hero-content {
-    position: relative;         /* mobile : reste dans le flux */
-    width: 100%;
-    padding: 0 1rem;
-    text-align: center;
-    animation: fadeInUp 1s ease-out both;
-  }
-  
-  .hero h1 {
-    margin: 0;
-    /* clamp(min, vw, max) pour scaler proprement */
-    font-size: clamp(2.2rem, 8vw, 3.5rem);
-    line-height: 1.2;
-    color: var(--white);
-    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-  }
-  
-  .highlight {
-    color: var(--primary);
-  }
-  
-  /* ======================
-     HERO DESKTOP ≥768px
-     ====================== */
-  @media (min-width: 768px) {
-    .hero {
-      background-image: url('/assets/images/img/hero-desktop.png');
-      height: 900px;
-      /* suppression du padding inutile */
-    }
-  
-    .hero-content {
-      position: absolute;        /* on sort du flux */
-      top: 15%;                  /* milieu vertical du hero */
-      left: 5%;                 /* aligné à gauche */
-      transform: translateY(-50%);
-      width: 10%;                /* ajustez selon votre maquette */
-      padding: 0;
-      text-align: left;
-    }
-  
-    .hero h1 {
-      /* agrandissement maximal sur grand écran */
-      font-size: clamp(3rem, 6vw, 7rem);
-      line-height: 1;
-    }
-  }
-
-
- /* ─────────────────────────────────────────────────────────────────────
-   2) CARTES CARRÉES
-───────────────────────────────────────────────────────────────────── */
-/* on contraint chaque carte à un ratio 1:1 */
-.cards .card {
-  aspect-ratio: 1 / 1;
-  overflow: hidden;        /* pour que l’image ne dépasse pas */
+.hero {
+  width: 100%;
+  height: 600px;
+  background: url('/assets/images/img/hero-mobile.png') center/cover no-repeat;
   display: flex;
-  flex-direction: column;  /* pour rester cohérent si vous avez du texte */
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.hero-content {
+  position: relative;
+  width: 100%;
+  padding: 0 1rem;
+  text-align: center;
+  animation: fadeInUp 1s ease-out both;
+}
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 8vw, 3.5rem);
+  line-height: 1.2;
+  color: var(--white);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+.highlight {
+  color: var(--primary);
+}
+/* HERO DESKTOP ≥768px redondance */
+@media (min-width: 768px) {
+  .hero {
+    background-image: url('/assets/images/img/hero-desktop.png');
+    height: 900px;
+  }
+  .hero-content {
+    position: absolute;
+    top: 15%;
+    left: 5%;
+    transform: translateY(-50%);
+    width: 10%;
+    padding: 0;
+    text-align: left;
+  }
+  .hero h1 {
+    font-size: clamp(3rem, 6vw, 7rem);
+    line-height: 1;
+  }
 }
 
-/* on force l’image à remplir entièrement la carte */
+/* ─────────────────────────────────────────────────────────────────────
+   2) CARTES CARRÉES
+───────────────────────────────────────────────────────────────────── */
+/* Je force chaque carte à garder un ratio 1:1 */
+.cards .card {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+/* Je fais remplir l'image toute la carte */
 .cards .card img {
   width: 100%;
   height: 100%;
-  object-fit: cover;       /* pour recadrer proprement */
+  object-fit: cover;
   display: block;
 }
 
 /* ─────────────────────────────────────────────────────────────────────
    3) RETOCHE OPTIONNELLE : CENTRAGE DES CARTES
 ───────────────────────────────────────────────────────────────────── */
-/* si vous avez une grille .cards { display: grid; … } */
+/* Je centre horizontalement et aligne en haut */
 .cards {
-  justify-items: center;  /* centre chaque carte dans sa cellule */
-  align-items: start;     /* ou center si vous voulez centrer verticalement */
+  justify-items: center;
+  align-items: start;
 }
 
 /* ─────────────────────────────────────────────────────────────────────
    4) (ÉVENTUEL) AJUSTEMENT DES BOUTONS HAMBURGER
 ───────────────────────────────────────────────────────────────────── */
-/* si vous avez un souci sur mobile, assurez-vous que .menu-toggle
-   et .site-header.menu-open .site-nav ont bien priorité */
+/* Je monte le z-index du toggler du menu hamburger */
 .menu-toggle {
   z-index: 1100;
 }
+/* Je mets le header en dessous du toggler */
 .site-header {
   z-index: 1000;
 }
 
-
 /* ==============================================
    CONTENEUR DE CARTES : grille fluide (desktop/mobile)
    ============================================== */
+/* Je fais une grille auto-fill pour un layout fluide */
 .cards {
   display: grid;
-  /* autant de colonnes qu’on peut rentrer, 
-     chaque colonne fait au moins 250px de large */
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1.5rem;            /* espace entre les cartes */
+  gap: 1.5rem;
   padding: 1.5rem;
-  justify-items: center;  /* centre chaque carte dans sa cellule */
+  justify-items: center;
 }
 
 /* ==============================================
    CHAQUE CARTE : format 1:1
    ============================================== */
+/* Je définis la carte pour qu'elle remplisse sa cellule et garde le ratio */
 .cards .card {
-  width: 100%;              /* prend tout l’espace de sa cellule */
-  aspect-ratio: 1 / 1;      /* forcer ratio carré */
+  width: 100%;
+  aspect-ratio: 1 / 1;
   background: var(--white);
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  overflow: hidden;         /* masque tout débordement */
+  overflow: hidden;
   transition: transform 0.3s, box-shadow 0.3s;
   display: flex;
   flex-direction: column;
 }
-
+/* Je donne l'effet hover pour relever la carte */
 .cards .card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 24px rgba(0,0,0,0.15);
 }
 
 /* ==============================================
-   IMAGE À L’INTÉRIEUR DE LA CARTE : 
-   remplit tout le carré, recadrée proprement
+   IMAGE À L’INTÉRIEUR DE LA CARTE : recadrage propre
    ============================================== */
 .cards .card img {
   width: 100%;
   height: 100%;
-  object-fit: cover;  /* recadrage couvrant sans déformation */
+  object-fit: cover;
   display: block;
 }
 
-
-/* CONTENEUR DES CARTES : 1 colonne sur mobile, 2 sur desktop */
+/* CONTENEUR DES CARTES : mobile 1 colonne, desktop 2 */
 .cards {
   display: grid;
-  grid-template-columns: 1fr;        /* 1 seule colonne par défaut */
-  gap: 1.5rem;                       /* espace entre les cartes */
-  max-width: 1000px;                 /* largeur max du conteneur */
-  margin: 2rem auto;                 /* centré horizontalement */
-  padding: 0 1rem;                   /* un peu de marge intérieure */
-  justify-items: stretch;            /* chaque carte prend toute la largeur de sa cellule */
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  justify-items: stretch;
 }
-
-/* Bascule 2 colonnes dès ≥768px */
+/* Je passe à deux colonnes dès 768px */
 @media (min-width: 768px) {
   .cards {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Dernière redéfinition de .cards pour plus d'espace */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 1500px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  justify-items: stretch;
+}
+@media (min-width: 768px) {
+  /* Je m'assure que chaque carte fait au moins 500px de large */
+  .cards {
+    grid-template-columns: repeat(2, minmax(500px, 1fr));
   }
 }
