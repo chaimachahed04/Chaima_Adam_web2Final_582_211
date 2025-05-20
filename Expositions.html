@@ -1,13 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Musée Redpath</title>
-    <meta name="meta" name="robots" content="noindex, nofollow">
-    <link rel="stylesheet" href="./css/main.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Expositions – Musée Redpath McGill</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/cc.css" />
 </head>
 <body>
+
+  <!-- Animation T-Rex -->
+  <div class="t-rex"></div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="logo">
+      <img src="assets/images/img/mcgill-university-logo-png-transparent.png" alt="McGill">
+    </div>
+    <div class="lang-toggle">EN</div>
+    <button class="menu-toggle" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav">
+      <a href="index.html">Accueil</a>
+      <a href="Expositions.html" class="active">Expositions</a>
+   <a href="Planifiez_votre_visite.html">Planifier votre visite</a>
+      <a href="Education_et_Recherche.html">Éducation &amp; Recherche</a>
+      <button class="search-icon" aria-label="Recherche">🔍</button>
+    </nav>
+  </header>
+
+  <!-- HERO (identique accueil) -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>
+        Musée<br>
+        Redpath<br>
+        <span class="highlight">McGill</span>
+      </h1>
+      <a href="Planifiez_votre_visite.html" class="btn btn-primary">Planifier votre visite</a>
+    </div>
+  </section>
+
+  <!-- TITRE DE PAGE -->
+  <section class="page-title">
+    <h2>Expositions</h2>
+    <section class="intro-expositions">
+      <p>
+        Découvrez la richesse et la diversité de nos collections à travers quatre univers fascinants. 
+        De la majesté des fossiles qui retracent l’histoire de la vie sur Terre aux trésors minéraux d’une beauté insoupçonnée, 
+        en passant par l’étonnante palette de la biodiversité et les témoignages vibrants des cultures du monde, 
+        chaque exposition vous invite à un voyage passionnant entre science, nature et patrimoine.
+      </p>
+    </section>
     
+  </section>
+
+  <!-- CARTES MOBILE -->
+  <section class="expositions mobile">
+    <div class="cards mobile">
+      <article class="card">
+        <img src="assets/images/img/20221221115840-redpath.jpg" alt="Biodiversités">
+        <span class="card-label">Biodiversités</span>
+      </article>
+      <article class="card">
+        <img src="assets/images/img/expo.png" alt="Paléontologie">
+        <span class="card-label">Paléontologie</span>
+      </article>
+      <article class="card">
+        <img src="assets/images/img/mineral.case.jpg" alt="Minéralogie">
+        <span class="card-label">Minéralogie</span>
+      </article>
+      <article class="card">
+        <img src="assets/images/img/faq.png" alt="Culture du monde">
+        <span class="card-label">Culture du monde</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- CARTES DESKTOP -->
+  <section class="expositions desktop">
+    <div class="cards desktop">
+      <article class="card">
+        <img src="assets/images/img/20221221115840-redpath.jpg" alt="Biodiversités">
+        <div class="card-content">
+          <h3>Biodiversités</h3>
+          <p>Une collection éducative sur la variété du vivant : plantes, invertébrés, organismes marins — essentielle pour comprendre la richesse du monde naturel.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="assets/images/img/expo.png" alt="Paléontologie">
+        <div class="card-content">
+          <h3>Paléontologie</h3>
+          <p>Découvrez une impressionnante collection de fossiles retraçant 500 millions d’années d’histoire de la vie sur Terre : squelettes, empreintes, ammonites, et bien plus.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="assets/images/img/mineral.case.jpg" alt="Minéralogie">
+        <div class="card-content">
+          <h3>Minéralogie</h3>
+          <p>Explorez des cristaux rares, des pierres précieuses, des météorites et des minéraux fascinants collectés aux quatre coins du monde.</p>
+        </div>
+      </article>
+      <article class="card">
+        <img src="assets/images/img/faq.png" alt="Culture du monde">
+        <div class="card-content">
+          <h3>Culture du monde</h3>
+          <p>Plongez dans les civilisations anciennes et contemporaines à travers des artefacts ethnographiques issus de toutes les régions du globe.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <img src="/assets/images/img/t-rex-3252844_1280.png" class="t-rex">
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-logo">
+      <img src="assets/images/img/mcgill-university-logo-png-transparent.png" alt="McGill">
+    </div>
+    <div class="social">
+      <a href="#"><img src="assets/images/img/1_Instagram_colored_svg_1-512.webp" alt="Instagram"></a>
+      <a href="#"><img src="assets/images/img/2023_Facebook_icon.svg.png" alt="Facebook"></a>
+    </div>
+    <p>© Université McGill, 2025</p>
+  </footer>
+
+  <!-- SCRIPT MENU -->
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const header     = document.querySelector('.site-header');
+    menuToggle.addEventListener('click', () => {
+      header.classList.toggle('menu-open');
+      menuToggle.classList.toggle('open');
+    });
+  </script>
 </body>
 </html>

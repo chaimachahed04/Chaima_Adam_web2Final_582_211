@@ -1,72 +1,98 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Musée Redpath – Accueil</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/cc.css">
-  <link rel="stylesheet" href="css/abf.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Musée Redpath McGill</title>
 
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/cc.css" />
+  <link rel="stylesheet" href="css/abf.css" />
+</head>
+<body>
 
-  <!-- HEADER -->
+  <!-- ===== HEADER ===== -->
   <header class="site-header">
-    <div class="container header-inner">
-      <a href="#" class="logo">
-        <img src="images/mcgill-logo.svg" alt="Logo McGill">
-      </a>
-      <nav class="main-nav">
-        <ul>
-          <li><a href="#">Accueil</a></li>
-          <li><a href="#">Exposition</a></li>
-          <li><a href="#">Collections</a></li>
-          <li><a href="#">Éducation & Recherche</a></li>
-          <li><a href="#">À propos</a></li>
-        </ul>
-      </nav>
-      <button class="search-btn" aria-label="Rechercher">🔍</button>
+    <body class="page-accueil">
+    <div class="logo">
+      <img src="assets/images/img/mcgill-university-logo-png-transparent.png" alt="McGill">
     </div>
+    <div class="lang-toggle">EN</div>
+    <button class="menu-toggle" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav">
+      <a href="/index.html">Accueil</a>
+      <a href="/Expositions.html">Exposition</a>
+      <a href="/Planifiez_votre_visite.html">Planifier votre visite</a>
+      <a href="/Education_et_Recherche.html">Éducation &amp; Recherche</a>
+      <button class="search-icon" aria-label="Recherche">🔍</button>
+    </nav>
   </header>
 
-  <!-- HERO -->
+  <!-- ===== HERO ===== -->
   <section class="hero">
-    <img src="assets/Musée Redpath sous la lumière dorée.png" alt="Façade du musée Redpath" class="hero-bg">
-
-    <div class="hero-content container">
-      <div class="hero-text">
-        <h1 class="hero-title">
-          Musée<br>
-          Redpath
-        </h1>
-        <span class="hero-mcgill">McGill</span>
+    <div class="hero-content">
+     <h1>
+        Musée<br>
+        Redpath<br>
+        <span class="highlight">McGill</span>
+      </h1>
+      <a href="Planifiez_votre_visite.html" class="btn btn-primary">Planifier votre visite</a>
       </div>
-      <a href="#" class="btn">Planifier votre visite</a>
-    </div>
   </section>
 
-  <!-- HORAIRES -->
-  <section class="schedule container">
+  <!-- ===== HORAIRES ===== -->
+  <section class="hours">
     <p>
-      Le Musée est ouvert du mardi au vendredi de 9 h à 16 h 30 et le samedi de 10 h à 16 h.<br>
-      Fermé le dimanche et le lundi.
+<br>Horaire du Musée</br>s
+Le Musée est ouvert du mardi au vendredi de 9h à 16h30 et le samedi de 10h à 16h.
+Fermé le dimanche et le lundi.
     </p>
   </section>
 
-  <!-- À DÉCOUVRIR -->
-  <section class="discover container">
-    <h2>À découvrir …</h2>
-    <div class="cards">
-      <article class="card">
-        <img src="assets/fossile.png" alt="Squelette de dinosaure">
-        <h3>Four Pillars of the Redpath Museum: Auditorium Exhibit</h3>
-      </article>
-      <article class="card">
-        <img src="assets/Capture d’écran, le 2025-05-16 à 00.09.44.png" alt="Oiseau naturalisé">
-        <h3>Biodiversités</h3>
-      </article>
-    </div>
+  <!-- ===== CARTES (4 cartes responsives) ===== -->
+  <section class="cards">
+    <article class="card">
+      <img src="assets/images/img/expo.png" alt="Exposition">
+      <h3>Exposition</h3>
+    </article>
+    <article class="card">
+      <img src="assets/images/img/event.jpg" alt="Événement">
+      <h3>Événement</h3>
+    </article>
+    <article class="card">
+      <img src="assets/images/img/Pabellón Nacional de la biodiversidad.jpg" alt="Biodiversités">
+      <h3>Biodiversités</h3>
+    </article>
+    <article class="card">
+      <img src="assets/images/img/faq.png" alt="Foire aux questions">
+      <h3>Foire aux questions</h3>
+    </article>
   </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-logo">
+      <img src="assets/images/img/mcgill-university-logo-png-transparent.png" alt="McGill">
+    </div>
+    <div class="social">
+      <a href="#"><img src="assets/images/img/1_Instagram_colored_svg_1-512.webp" alt="Instagram"></a>
+      <a href="#"><img src="assets/images/img/2023_Facebook_icon.svg.png" alt="Facebook"></a>
+    </div>
+    <p>© Université McGill, 2025</p>
+  </footer>
+
+  <!-- ===== SCRIPT MENU MOBILE ===== -->
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const siteHeader = document.querySelector('.site-header');
+
+    menuToggle.addEventListener('click', () => {
+      siteHeader.classList.toggle('menu-open'); // Ajoute ou enlève la classe "menu-open"
+      menuToggle.classList.toggle('open'); // Transforme le bouton hamburger en "X"
+    });
+  </script>
 
 </body>
 </html>

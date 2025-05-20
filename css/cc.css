@@ -1,0 +1,595 @@
+/* ======================
+   HEADER
+   ====================== */
+   .site-header {
+    width: 100%;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    background: var(--bg);
+  }
+  
+  /* Logo */
+  .site-header .logo img {
+    width: 100px;
+  }
+  
+  /* LANGUE & HAMBURGER (mobile) */
+  .lang-toggle {
+    font-size: 0.9em;
+    cursor: pointer;
+  }
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--text);
+  }
+  
+  /* NAVIGATION (desktop) - cachée mobile */
+  .site-nav {
+    display: none;
+  }
+  
+  /* ======================
+     HERO MOBILE-FIRST
+     ====================== */
+  .hero {
+    width: 100%;
+    height: 700px;
+    background-image: url('../assets/images/img/Musée Redpath sous la lumière dorée.png'); /* Chemin correct */
+    background-size: cover; /* L'image couvre toute la section */
+    background-position: center; /* Centre l'image */
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+    display: flex;
+    flex-direction: column; /* Assure que le contenu reste vertical */
+    align-items: center; /* Centre horizontalement le contenu */
+    justify-content: center; /* Centre verticalement le contenu */
+    position: relative; /* Nécessaire pour gérer les superpositions */
+    z-index: 1; /* Assure que le contenu est au-dessus de l'image */
+  }
+  
+  
+  .hero-content {
+    position: relative; /* Assure que le contenu est au-dessus de l'overlay */
+    text-align: center;
+    animation: fadeInUp 1s ease-out both;
+    z-index: 1; /* Place le contenu au-dessus de l'image et de l'overlay */
+  }
+  
+  .hero h1 {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    color: var(--white); /* Assure que le texte est visible */
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); /* Ajoute un effet d'ombre pour améliorer la lisibilité */
+  }
+  
+  .highlight {
+    color: var(--primary);
+  }
+  
+  /* ======================
+     HORAIRES
+     ====================== */
+  .hours {
+    padding: 1.5em;
+    text-align: center;
+  }
+  .hours p {
+    font-style: italic;
+  }
+  
+  /* ======================
+     CARTES MOBILE (4 cartes)
+     ====================== */
+  .cards.mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    padding: 1em;
+  }
+  
+  /* ======================
+     CARTES GÉNÉRALE
+     ====================== */
+  .cards {
+    /* fusionne mobile et desktop : mobile-first */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    padding: 1em;
+    
+  }
+  .cards .card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: var(--white);
+  }
+  .cards .card img {
+    /* uniformisation des images */
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+  }
+  .cards .card h3,
+  .cards .card .card-label {
+    /* suivant que tu utilises <h3> ou .card-label */
+    padding: 1em;
+    margin: 0;
+    font-size: 1rem;
+    text-align: center;
+  }
+  .cards .card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+  
+  /* ======================
+     SECTION DÉCOUVRIR (desktop only)
+     ====================== */
+  .discover {
+    display: none;  /* cachée sur mobile */
+    padding: 1.5em;
+  }
+  .discover h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1em;
+  }
+  
+  /* ======================
+     FOOTER
+     ====================== */
+  .site-footer {
+    background: var(--text);
+    color: var(--white);
+    text-align: center;
+    padding: 2em 1em;
+  }
+  .footer-logo img {
+    width: 100px;
+    margin-bottom: 1em;
+  }
+  .site-footer .social a {
+    margin: 0 0.5em;
+    display: inline-block;
+  }
+  .site-footer .social img {
+    width: 24px;
+    height: 24px;
+  }
+  .site-footer p {
+    margin-top: 1em;
+    font-size: 0.8em;
+  }
+  
+  /* ======================
+     ANIMATIONS
+     ====================== */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* ======================
+     MEDIA QUERIES (desktop ≥ 768px)
+     ====================== */
+  @media (min-width: 768px) {
+    /* HEADER : bascule nav / hamburger */
+    .menu-toggle,
+    .lang-toggle {
+      display: none;
+    }
+    .site-nav {
+      display: flex;
+      gap: 2em;
+      font-size: 0.95em;
+      align-items: center;
+    }
+  
+    /* HERO : image desktop + hauteur */
+    .hero {
+      background-image: url('/assets/images/img/hero-desktop.png');
+      height: 900px;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+    }
+  
+    /* CARTES → grid 2×2 */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2em;
+      padding: 2em;
+    }
+    .cards .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+  
+    /* Affiche discover si besoin */
+    .discover {
+      display: block;
+    }
+  }
+
+
+/* =========================================================================
+   Expositions Page Styles (mobile‑first, à placer dans cc.css)
+   ========================================================================= */
+
+/* ======================
+   SWITCH MOBILE / DESKTOP
+   ====================== */
+   .expositions.mobile { display: block; }
+   .expositions.desktop { display: none; }
+   
+   @media (min-width: 768px) {
+     .expositions.mobile  { display: none; }
+     .expositions.desktop { display: block; }
+   }
+   
+   /* ======================
+      LAYOUT DES CARTES
+      ====================== */
+   /* mobile (1 colonne) */
+   .expositions.mobile .cards {
+     display: flex;
+     flex-direction: column;
+     gap: 1.5em;
+     padding: 1em;
+   }
+
+
+  h2 {
+    display: block;
+    font-size: 3em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+        
+    }
+    
+    .intro-expositions p {
+      max-width: 800px;
+      margin: 0.5em auto 2em;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--text);
+      text-align: center;
+    }
+    
+
+   
+   /* desktop (grid 2×2) */
+   @media (min-width: 768px) {
+     .expositions.desktop .cards {
+       display: grid;
+       grid-template-columns: repeat(2, 1fr);
+       gap: 2em;
+       padding: 2em 1em;
+     }
+   }
+   
+   /* ======================
+      STYLE GÉNÉRAL DES CARTES
+      ====================== */
+   .expositions .card {
+     background: var(--white);
+     border-radius: 12px;
+     overflow: hidden;
+     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+     display: flex;
+     flex-direction: column;
+   }
+   .expositions .card img {
+     width: 100%;
+     display: block;
+     object-fit: cover;
+   }
+   
+   /* ======================
+      MOBILE : LABEL SUR IMAGE
+      ====================== */
+   .expositions.mobile .card {
+     position: relative;
+   }
+   .expositions.mobile .card-label {
+     position: absolute;
+     bottom: 8px;
+     right: 8px;
+     background: rgba(0,0,0,0.6);
+     color: #fff;
+     padding: 4px 8px;
+     border-radius: 4px;
+     font-size: 0.85rem;
+     text-transform: uppercase;
+   }
+   
+   /* ======================
+      DESKTOP : CONTENU TEXTE
+      ====================== */
+   .expositions.desktop .card-content {
+     padding: 1.2em;
+     display: flex;
+     flex-direction: column;
+     flex-grow: 1;
+   }
+   .expositions.desktop .card-content h3 {
+     margin: 0 0 0.6em;
+     font-size: 1.2rem;
+     color: var(--text);
+   }
+   .expositions.desktop .card-content p {
+     margin: 0;
+     flex-grow: 1;
+     font-size: 0.95rem;
+     line-height: 1.5;
+     color: #555;
+   }
+   /* hover desktop */
+   .expositions.desktop .card:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+   }
+   
+   
+   .t-rex {
+    position: absolute;
+    left: 70vw; /*Pour que la plume sois 35% de la largeur de la fenêtre */
+    top: -10vh; /* Pour que se soit -10% de la hauteur de la fenêtre */
+    height: 10vh; /*Pour que l'hauteurde la plume correspondant à 10% de la hauteur de la fenêtre */
+    background-image: url(/assets/images/img/t-rex-3252844_1280.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: t-rex 10s infinite ease-in-out; /* J'ai fait en sorte que l'animation infinie avec lissage */
+    z-index: 1000; /* Place le T-Rex au-dessus du contenu */
+}
+
+@keyframes t-rex {
+    0% {
+        transform: translateY(0vh) translateX(-10vw) rotate(40deg);
+    }
+    20% {
+        transform: translateY(20vh) translateX(10vw) rotate(-10deg);
+    }
+    40% {
+        transform: translateY(40vh) translateX(-10vw) rotate(20deg);
+    }
+    60% {
+        transform: translateY(60vh) translateX(10vw) rotate(-5deg);
+    }
+    80% {
+        transform: translateY(80vh) translateX(-10vw) rotate(10deg);
+    }
+    100% {
+        transform: translateY(100vh) translateX(10vw) rotate(-10deg);
+    }
+}
+
+/* ====================================
+   HERO CONTENT — Réglages tablette
+   ==================================== */
+/* Desktop « limite basse » (tablette) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hero-content {
+    position: absolute;
+    top: 50%;
+    left: 5%;        /* un peu moins de décalage à gauche */
+    transform: translateY(-50%);
+    width: 50%;      /* plus de place pour le texte en tablette */
+    padding: 0;
+    text-align: left;
+  }
+  .hero h1 {
+    /* on adapte le clamp pour tablette */
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 1.1;
+  }
+  .hero h1 .highlight {
+    font-size: clamp(1.8rem, 5vw, 4rem);
+  }
+}
+
+/* Desktop « plein » (grand écran) */
+@media (min-width: 1025px) {
+  .hero-content {
+    left: 10%;
+    width: 40%;
+  }
+  .hero h1 {
+    font-size: clamp(3rem, 5vw, 7rem);
+  }
+  .hero h1 .highlight {
+    font-size: clamp(2.2rem, 4vw, 5rem);
+  }
+}
+
+/* ======================
+   HERO MOBILE-FIRST
+   ====================== */
+   .hero {
+    width: 100%;
+    height: 600px;
+    background: url('/assets/images/img/hero-mobile.png') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;         /* pour position absolute en desktop */
+  }
+  
+  .hero-content {
+    position: relative;         /* mobile : reste dans le flux */
+    width: 100%;
+    padding: 0 1rem;
+    text-align: center;
+    animation: fadeInUp 1s ease-out both;
+  }
+  
+  .hero h1 {
+    margin: 0;
+    /* clamp(min, vw, max) pour scaler proprement */
+    font-size: clamp(2.2rem, 8vw, 3.5rem);
+    line-height: 1.2;
+    color: var(--white);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  }
+  
+  .highlight {
+    color: var(--primary);
+  }
+  
+  /* ======================
+     HERO DESKTOP ≥768px
+     ====================== */
+  @media (min-width: 768px) {
+    .hero {
+      background-image: url('/assets/images/img/hero-desktop.png');
+      height: 900px;
+      /* suppression du padding inutile */
+    }
+  
+    .hero-content {
+      position: absolute;        /* on sort du flux */
+      top: 15%;                  /* milieu vertical du hero */
+      left: 5%;                 /* aligné à gauche */
+      transform: translateY(-50%);
+      width: 10%;                /* ajustez selon votre maquette */
+      padding: 0;
+      text-align: left;
+    }
+  
+    .hero h1 {
+      /* agrandissement maximal sur grand écran */
+      font-size: clamp(3rem, 6vw, 7rem);
+      line-height: 1;
+    }
+  }
+
+
+ /* ─────────────────────────────────────────────────────────────────────
+   2) CARTES CARRÉES
+───────────────────────────────────────────────────────────────────── */
+/* on contraint chaque carte à un ratio 1:1 */
+.cards .card {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;        /* pour que l’image ne dépasse pas */
+  display: flex;
+  flex-direction: column;  /* pour rester cohérent si vous avez du texte */
+}
+
+/* on force l’image à remplir entièrement la carte */
+.cards .card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* pour recadrer proprement */
+  display: block;
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   3) RETOCHE OPTIONNELLE : CENTRAGE DES CARTES
+───────────────────────────────────────────────────────────────────── */
+/* si vous avez une grille .cards { display: grid; … } */
+.cards {
+  justify-items: center;  /* centre chaque carte dans sa cellule */
+  align-items: start;     /* ou center si vous voulez centrer verticalement */
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   4) (ÉVENTUEL) AJUSTEMENT DES BOUTONS HAMBURGER
+───────────────────────────────────────────────────────────────────── */
+/* si vous avez un souci sur mobile, assurez-vous que .menu-toggle
+   et .site-header.menu-open .site-nav ont bien priorité */
+.menu-toggle {
+  z-index: 1100;
+}
+.site-header {
+  z-index: 1000;
+}
+
+
+/* ==============================================
+   CONTENEUR DE CARTES : grille fluide (desktop/mobile)
+   ============================================== */
+.cards {
+  display: grid;
+  /* autant de colonnes qu’on peut rentrer, 
+     chaque colonne fait au moins 250px de large */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;            /* espace entre les cartes */
+  padding: 1.5rem;
+  justify-items: center;  /* centre chaque carte dans sa cellule */
+}
+
+/* ==============================================
+   CHAQUE CARTE : format 1:1
+   ============================================== */
+.cards .card {
+  width: 100%;              /* prend tout l’espace de sa cellule */
+  aspect-ratio: 1 / 1;      /* forcer ratio carré */
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;         /* masque tout débordement */
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.cards .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+/* ==============================================
+   IMAGE À L’INTÉRIEUR DE LA CARTE : 
+   remplit tout le carré, recadrée proprement
+   ============================================== */
+.cards .card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* recadrage couvrant sans déformation */
+  display: block;
+}
+
+
+/* CONTENEUR DES CARTES : 1 colonne sur mobile, 2 sur desktop */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;        /* 1 seule colonne par défaut */
+  gap: 1.5rem;                       /* espace entre les cartes */
+  max-width: 1000px;                 /* largeur max du conteneur */
+  margin: 2rem auto;                 /* centré horizontalement */
+  padding: 0 1rem;                   /* un peu de marge intérieure */
+  justify-items: stretch;            /* chaque carte prend toute la largeur de sa cellule */
+}
+
+/* Bascule 2 colonnes dès ≥768px */
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
