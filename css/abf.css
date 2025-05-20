@@ -1,0 +1,742 @@
+/* pour définir les styles de la page Éducation & Recherche — version ABF.CSS */
+ 
+/* pour le header spécifique à la page éducation, identique aux autres pages */
+.page-education .site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+    background: var(--bg);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  /* pour fixer la largeur du logo dans le header de la page éducation */
+  .page-education .logo img {
+    width: 100px;
+  }
+  /* pour organiser la navigation principale en flex avec espacement */
+  .page-education .site-nav {
+    display: flex;
+    gap: 2rem;
+    font-size: 0.95rem;
+  }
+  /* pour styliser les liens de navigation sans soulignement et couleur par défaut */
+  .page-education .site-nav a {
+    text-decoration: none;
+    color: var(--text);
+    transition: color 0.2s;
+  }
+  /* pour changer la couleur des liens actifs ou au survol */
+  .page-education .site-nav a.active,
+  .page-education .site-nav a:hover {
+    color: var(--primary);
+  }
+  /* pour styliser le bouton d’icône de recherche dans la nav */
+  .page-education .site-nav button.search-icon {
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+   
+  /* pour centrer le contenu principal et ajouter du padding global */
+  .page-education main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+   
+  /* pour centrer le titre de page et espacer du contenu */
+  .page-education .page-title {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  /* pour définir la taille et la couleur du titre principal */
+  .page-education .page-title h1 {
+    font-size: 2.5rem;
+    color: var(--text);
+    margin: 0;
+  }
+   
+  /* pour organiser les boutons d’action en flex et gérer leur espacement */
+  .page-education .education-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+  /* pour styliser le padding, bordure et transition des boutons */
+  .page-education .education-actions .btn {
+    padding: 0.75em 1.5em;
+    border-radius: 8px;
+    font-weight: 500;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  /* pour ajouter un effet de survol sur les boutons */
+  .page-education .education-actions .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  }
+  /* pour définir le style du bouton principal */
+  .page-education .education-actions .btn-primary {
+    background: var(--primary);
+    color: #fff;
+  }
+  /* pour ajuster la couleur au survol du bouton principal */
+  .page-education .education-actions .btn-primary:hover {
+    background: #c7002b;
+  }
+  /* pour le style des boutons en outline */
+  .page-education .education-actions .btn-outline {
+    background: transparent;
+    border: 2px solid var(--text);
+    color: var(--text);
+  }
+  /* pour inverser background et couleur au survol des boutons outline */
+  .page-education .education-actions .btn-outline:hover {
+    background: var(--text);
+    color: #fff;
+  }
+   
+  /* pour configurer les sections d’éducation en grid mobile-first */
+  .page-education .education-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 4rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease-out both;
+  }
+  /* pour décaler l’animation de la première section */
+  .page-education .education-section:nth-of-type(1) {
+    animation-delay: 0.2s;
+  }
+  /* pour décaler l’animation de la deuxième section */
+  .page-education .education-section:nth-of-type(2) {
+    animation-delay: 0.4s;
+  }
+  /* pour inverser l’ordre du contenu dans les sections marquées reverse */
+  .page-education .education-section.reverse {
+    direction: rtl;
+  }
+  .page-education .education-section.reverse > * {
+    direction: ltr;
+  }
+   
+  /* pour aligner et styliser les titres et paragraphes de la section éducation */
+  .page-education .education-text {
+    text-align: left;
+  }
+  .page-education .education-text h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+  .page-education .education-text p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+   
+  /* pour styliser les images des sections éducation avec bordure et ombre */
+  .page-education .education-media img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    object-fit: cover;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  /* pour agrandir légèrement l’image au survol */
+  .page-education .education-media img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  }
+   
+  /* pour passer à deux colonnes sur écrans ≥768px */
+  @media (min-width: 768px) {
+    .page-education .education-section {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+   
+  /* pour définir l’animation fadeInUp */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+   
+  /* pour redéclarer les styles de la page éducation — version mise à jour */
+  body.page-education {
+    color: var(--text);
+    font-family: Georgia, serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+   
+  /* pour centrer et espacer le titre global */
+  .page-title {
+    text-align: center;
+    margin: 2rem 1rem;
+  }
+  .page-title h1 {
+    font-size: 2.5rem;
+    margin: 0;
+  }
+   
+  /* pour organiser les boutons d’accroche en flex et gérer leur styling */
+  .education-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .education-actions .btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--primary);
+    background: transparent;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .education-actions .btn:hover {
+    background: var(--primary);
+    color: var(--white);
+  }
+  .education-actions .btn-primary {
+    background: var(--primary);
+    color: var(--white);
+  }
+  .education-actions .btn-primary:hover {
+    background: var(--primary-dark);
+  }
+  .education-actions .btn-outline {
+    background: transparent;
+    color: var(--primary);
+  }
+  .education-actions .btn-outline:hover {
+    background: var(--primary);
+    color: var(--white);
+  }
+   
+  /* pour configurer les sections avec animation scroll */
+  .education-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0 1rem 3rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity var(--transition), transform var(--transition);
+  }
+  .education-section.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* pour disposer texte et média côte à côte sur desktop */
+  @media (min-width: 768px) {
+    .education-section {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    .education-section .education-text,
+    .education-section .education-media {
+      flex: 1 1 45%;
+    }
+  }
+  .education-text h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .education-media img {
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    object-fit: cover;
+  }
+   
+  /* pour styliser les cartes récapitulatives (si présentes) */
+  .edu-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+    gap: 1.5rem;
+    padding: 0 1rem 3rem;
+  }
+  .edu-cards .card {
+    background: var(--bg-section);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .edu-cards .card img {
+    width: 100%;
+    display: block;
+  }
+  .edu-cards .card h3 {
+    margin: 1rem;
+    font-size: 1.25rem;
+  }
+  .edu-cards .card p {
+    margin: 0 1rem 1rem;
+    flex-grow: 1;
+    font-size: 0.95rem;
+  }
+  .edu-cards .card details summary {
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .edu-cards .card .btn-small {
+    margin: 0 1rem 1rem;
+  }
+   
+  /* pour styliser la section de recommandation */
+  .reco {
+    background: #f5f0e8;
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  .reco h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+   
+  /* pour définir le footer global */
+  .site-footer {
+    background: var(--text);
+    color: var(--white);
+    text-align: center;
+    padding: 2em 1em;
+  }
+  .footer-logo img {
+    width: 100px;
+    margin-bottom: 1em;
+  }
+  .site-footer .social a {
+    margin: 0 0.5em;
+    display: inline-block;
+  }
+  .site-footer .social img {
+    width: 24px;
+    height: 24px;
+  }
+  .site-footer p {
+    margin-top: 1em;
+    font-size: 0.8em;
+  }
+   
+  /* pour styliser le hero de la page éducation */
+  .hero-education {
+    position: relative;
+    background: url('../assets/images/img/hero-edu.jpg') center/cover no-repeat;
+    height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-education .hero-content {
+    background: rgba(0,0,0,0.5);
+    padding: 2rem 3rem;
+    border-radius: 8px;
+    text-align: center;
+    animation: fadeInDown 1s both;
+  }
+  .hero-education h1 {
+    color: var(--white);
+    font-size: 2.6rem;
+    margin: 0 0 .5rem;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+  }
+  .hero-education p {
+    color: var(--white);
+    font-size: 1.1rem;
+  }
+   
+  /* pour animer l’apparition du hero */
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+   
+  /* pour l’animation popIn des cartes */
+  @keyframes popIn {
+    from { opacity: 0; transform: translateY(20px) scale(.95); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+   
+  /* pour le menu mobile ouvert dans le header */
+  .site-header.menu-open .site-nav {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 200px;
+    padding: 1rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+  }
+   
+  /* pour animer une loupe qui flotte */
+  .loupe {
+    position: absolute;
+    left: 70vw;
+    top: -10vh;
+    height: 10vh;
+    background-image: url(/assets/images/img/purepng.com-loupeloupesmall-magnifying-glass-1701527871878gdiha.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    animation: loupe 10s infinite ease-in-out;
+  }
+  @keyframes loupe {
+    0%   { transform: translateY(0vh) translateX(-10vw) rotate(40deg); }
+    20%  { transform: translateY(20vh) translateX(10vw) rotate(-10deg); }
+    40%  { transform: translateY(40vh) translateX(-10vw) rotate(20deg); }
+    60%  { transform: translateY(60vh) translateX(10vw) rotate(-5deg); }
+    80%  { transform: translateY(80vh) translateX(-10vw) rotate(10deg); }
+    100% { transform: translateY(100vh) translateX(10vw) rotate(-10deg); }
+  }
+   
+  /* pour styliser le header global */
+  .site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: var(--bg-header);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  .site-header .logo img {
+    max-width: 120px;
+    height: auto;
+  }
+  .site-header .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .site-header .menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--text);
+    margin: 5px 0;
+  }
+  .site-header .site-nav {
+    display: flex;
+    gap: 2rem;
+    margin-left: auto;
+  }
+  .site-header .site-nav a {
+    text-decoration: none;
+    color: var(--text);
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+  .site-header .site-nav a.active,
+  .site-header .site-nav a:hover {
+    color: var(--primary);
+  }
+  .site-header .search-icon {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+   
+  /* pour afficher le menu sur mobile ≤768px */
+  @media (max-width: 768px) {
+    .site-header .menu-toggle {
+      display: block;
+    }
+    .site-header .site-nav {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: var(--bg);
+      width: 100%;
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .site-header.menu-open .site-nav {
+      display: flex;
+    }
+    .site-header .site-nav a {
+      padding: 0.5rem 0;
+      text-align: center;
+    }
+  }
+   
+  /* pour styliser la page Planifier votre visite — header */
+  .page-planif .visit-image {
+    text-align: center;
+    margin: 2rem auto;
+    max-width: 600px;
+    padding: 0 1rem;
+  }
+  .page-planif .visit-image img {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    object-fit: cover;
+  }
+   
+  /* pour le container de carte Google Maps arrondi sans contour */
+  .page-planif .map-container {
+    max-width: 800px;
+    margin: 2rem auto 4rem;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .page-planif .map-container iframe {
+    width: 100%;
+    height: 600px;
+    border: 0;
+    outline: none;
+    display: block;
+  }
+   
+  /* pour organiser horaires & tarifs en grid responsive */
+  .hours-pricing {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin: 3rem auto;
+    max-width: 1000px;
+    padding: 0 1rem;
+  }
+  @media (min-width: 768px) {
+    .hours-pricing {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  }
+  .hours h2,
+  .pricing h2 {
+    margin-top: 0;
+    font-size: 1.6rem;
+    color: var(--text);
+  }
+  .hours ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+  }
+  .hours li {
+    margin-bottom: 0.6rem;
+    font-size: 1rem;
+    color: #333;
+  }
+  .pricing table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0 0;
+  }
+  .pricing td {
+    padding: 0.5rem 0;
+    font-size: 1rem;
+  }
+  .pricing td:first-child {
+    text-align: left;
+  }
+  .pricing td:last-child {
+    text-align: right;
+  }
+   
+  /* pour styliser le call-to-action réservation */
+  .visit-cta {
+    text-align: center;
+    margin: 3rem 0;
+  }
+  .visit-cta .btn-primary {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+   
+  /* pour la section localisation centrée */
+  .location {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+    text-align: center;
+    border: 0;
+  }
+  .location h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+   
+  /* pour animer le bouton réservation */
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.05); }
+  }
+   
+  /* pour ajuster le footer de la page planifier votre visite */
+  .page-planif .site-header .logo img {
+    max-width: 120px;
+    height: auto;
+  }
+  .page-planif .site-header .site-nav {
+    margin-left: auto;
+    display: flex;
+    gap: 2rem;
+  }
+  .page-planif .planif-hero img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  }
+   
+  /* pour structurer le layout de la page planif — titre */
+  .page-planif .page-title {
+    text-align: center;
+    padding: 3rem 1rem 2rem;
+  }
+  .page-planif .page-title p {
+    max-width: 600px;
+    margin: 0.5rem auto;
+    color: #555;
+    line-height: 1.5;
+  }
+   
+  /* pour grid horaires & tarifs sur layout planif */
+  .hours-pricing {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  .hours-pricing .card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  }
+  .hours-pricing h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .hours-pricing ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .hours-pricing li {
+    margin-bottom: 0.5rem;
+  }
+   
+  /* pour styliser CTA réservation planif */
+  .visit-cta {
+    text-align: center;
+    margin: 2.5rem 0;
+  }
+  .visit-cta .btn-primary {
+    padding: 0.75em 2em;
+    font-size: 1rem;
+  }
+   
+  /* pour la section accessibilité */
+  .accessibility {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  .accessibility h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .accessibility p {
+    color: #555;
+    line-height: 1.6;
+  }
+   
+  /* pour la section localisation enrichie */
+  .page-planif .location {
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  .page-planif .location h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .page-planif .map-container {
+    max-width: 800px;
+    margin: 0 auto 1rem;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  }
+  .page-planif .map-container iframe {
+    width: 100%;
+    height: 300px;
+    border: 0;
+    outline: none;
+    display: block;
+  }
+  .page-planif address {
+    font-style: normal;
+    color: #555;
+    line-height: 1.5;
+    margin-top: 0.5rem;
+  }
+   
+  /* pour la section conseils & tips */
+  .tips {
+    max-width: 700px;
+    margin: 2rem auto 4rem;
+    padding: 0 1rem;
+  }
+  .tips h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .tips ul {
+    list-style: disc inside;
+    color: #555;
+    line-height: 1.6;
+  }
+   
+  /* pour les ajustements responsive ≤767px */
+  @media (max-width: 767px) {
+    .hours-pricing {
+      grid-template-columns: 1fr;
+    }
+  }
+   
