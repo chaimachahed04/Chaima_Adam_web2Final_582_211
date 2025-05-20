@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Planifier votre visite – Musée Redpath McGill</title>
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="css/abf.css" />
+</head>
+<body class="page-planif">
+ 
+  <!-- HEADER (identique aux autres pages) -->
+  <header class="site-header">
+    <div class="logo">
+      <img src="assets/images/img/mcgill-university-logo-png-transparent.png" alt="McGill" />
+    </div>
+    <button class="menu-toggle" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+    <nav class="site-nav">
+      <a href="index.html">Accueil</a>
+      <a href="Expositions.html">Expositions</a>
+      <a href="Planifiez_votre_visite.html" class="active">Planifier votre visite</a>
+      <a href="/Education_et_Recherche.html">Éducation &amp; Recherche</a>
+      <button class="search-icon" aria-label="Recherche">🔍</button>
+    </nav>
+  </header>
+ 
+  <main>
+    <!-- TITRE -->
+    <section class="page-title">
+      <h1>Planifier votre visite</h1>
+      <p>Retrouvez ici toutes les infos pratiques : horaires, tarifs, accessibilité, réservation et plan d’accès.</p>
+    </section>
+ 
+    <!-- HORAIRES & TARIFS -->
+    <section class="hours-pricing">
+      <div class="card">
+        <h2>Horaires</h2>
+        <ul>
+          <li><strong>Mardi – Vendredi :</strong> 9 h 30 – 16 h 30</li>
+          <li><strong>Samedi :</strong> 10 h – 16 h</li>
+          <li><strong>Dimanche & Lundi :</strong> Fermé</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Tarifs</h2>
+        <ul>
+          <li><strong>Adultes :</strong> 10 $</li>
+          <li><strong>Étudiant·e·s & aîné·e·s :</strong> 7 $</li>
+          <li><strong>Enfants (0–12) & membres :</strong> Gratuit</li>
+        </ul>
+      </div>
+    </section>
+ 
+    <!-- CTA RÉSERVATION -->
+    <section class="visit-cta">
+      <a href="#" class="btn btn-primary">Réserver votre visite</a>
+    </section>
+ 
+    <!-- ACCESSIBILITÉ -->
+    <section class="accessibility">
+      <h2>Accessibilité</h2>
+      <p>Le Musée Redpath n’est pas accessible en fauteuil roulant et ne dispose pas d’ascenseur.
+      Merci de nous contacter si vous avez des besoins particuliers.</p>
+    </section>
+ 
+    <!-- LOCALISATION -->
+    <section class="location">
+      <h2>Où nous trouver</h2>
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5592.557401171828!2d-73.5773825!3d45.504468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91a47279b007b%3A0xbe8a7d9f319d4f92!2sMus%C3%A9e%20Redpath!5e0!3m2!1sfr!2sca!4v1747686678019!5m2!1sfr!2sca"
+          width="600"
+          height="450"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <address>
+        <strong>Musée Redpath</strong><br>
+        859, rue Sherbrooke Ouest<br>
+        Montréal (QC) H3A 0C4
+        <br>+15143984861</br>
+ 
+      </address>
+    </section>
+ 
+    <!-- INFOS UTILES -->
+    <section class="tips">
+      <h2>Quelques conseils</h2>
+      <ul>
+        <li>Prévoir 1 h 30 pour bien profiter de toutes les galeries.</li>
+        <li>Les casiers sont gratuits : vous pouvez laisser vestes et sacs volumineux.</li>
+        <li>Photographie sans flash uniquement.</li>
+        <li>Billets en prévente en ligne fortement recommandés.</li>
+      </ul>
+    </section>
+  </main>
+ 
+ 
+ 
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <div class="footer-logo">
+      <img src="assets/images/img/mcgill-university-logo-png-transparent.png" alt="McGill">
+    </div>
+    <div class="social">
+      <a href="#"><img src="assets/images/img/1_Instagram_colored_svg_1-512.webp" alt="Instagram"></a>
+      <a href="#"><img src="assets/images/img/2023_Facebook_icon.svg.png" alt="Facebook"></a>
+    </div>
+    <p>© Université McGill, 2025</p>
+  </footer>
+ 
+  <!-- ===== SCRIPT MENU MOBILE ===== -->
+  <script>
+    const btn = document.querySelector('.menu-toggle');
+    const hdr = document.querySelector('.site-header');
+    btn.addEventListener('click', () => {
+      hdr.classList.toggle('menu-open');
+      btn.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
+ 
